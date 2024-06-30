@@ -1,0 +1,2 @@
+[all]
+vm_azure ansible_ssh_host=4.180.167.168 ansible_ssh_user=testadmin ansible_ssh_private_key_file=~/.ssh/id_azure

@@ -1,0 +1,57 @@
+---
+- name: Install Docker and manage ioannismac/projet_m2i_app container
+  hosts: vm_azure
+  become: true  # Ensure privilege escalation is used if required
+
+  tasks:
+    - name: Install Docker dependencies
+      apt:
+        name:
+          - apt-transport-https
+          - ca-certificates
+          - curl
+          - gnupg
+          - lsb-release
+        state: present
+
+    - name: Add Docker GPG key
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+    - name: Add Docker repository
+      apt_repository:
+        repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_lsb.codename }} stable
+        state: present
+
+    - name: Install Docker
+      apt:
+        name: docker-ce
+        state: present
+
+    - name: Ensure Docker service is started and enabled
+      service:
+        name: docker
+        state: started
+        enabled: yes
+    
+    - name: Log in to Docker 
+      docker_login:
+        username: "ioannismac"
+        password: "Dockerhubpass"
+        email: "ioannis.machaliotis@labom2iformation.fr"
+        reauthorize: yes
+
+    - name: Pull ioannismac/projet_m2i_app Docker image
+      docker_image:
+        name: ioannismac/projet_m2i_app
+        source: pull
+
+    - name: Run ioannismac/projet_m2i_app container on port 8081
+      docker_container:
+        name: m2iproject
+        image: ioannismac/projet_m2i_app
+        state: started
+        restart_policy: always
+        ports:
+          - "8081:9090"
