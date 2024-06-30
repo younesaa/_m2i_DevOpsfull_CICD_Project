@@ -17,7 +17,7 @@ pipeline {
         stage('Checkout Code') {
             steps {
                 // Get some code from a GitHub repository
-                git branch: 'main' , url: 'https://github.com/ioannis-mac/proje_m2i.git', credentialsId: 'ioannis-mac-projet-fil-rouge'
+                git branch: 'main' , url: 'https://https://github.com/younesaa/m2i_DevOpsfull_CICD_Project.git', credentialsId: 'projet-fil-rouge'
             }
         }
         stage('Maven clean test') {
