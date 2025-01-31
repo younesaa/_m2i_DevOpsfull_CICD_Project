@@ -18,7 +18,7 @@ Technologies used in this project:
 # Results
 
 Sample image of the pipeline: 
-![alt text](https://github.com/younesaa/m2i_DevOpsfull_CICD_Project/blob/main/Pipeline-stage-vie.png?raw=true)
+![alt text](https://github.com/younesaa/m2i_DevOpsfull_CICD_Project/blob/main/Pipeline-stage-view.png?raw=true)
 
 Sample image of SonaQube
 ![alt text](https://github.com/younesaa/m2i_DevOpsfull_CICD_Project/blob/main/SonarQube.png)
